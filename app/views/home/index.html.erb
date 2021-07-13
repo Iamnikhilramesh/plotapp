@@ -1,4 +1,5 @@
 <h2>Plot</h2>
+<% if user_signed_in? %>
 <%= column_chart Order.group(:bill_country_iso_name).sum(:total), title: "Country sales", xtitle: "Country", ytitle: "Sales"%>
 </br></br>
 <%= column_chart @month_sales, title: "Monthly Sales", xtitle: "Month", ytitle: "Sales"%>
@@ -32,3 +33,8 @@
 <h5>Country Sales</h5>
 
 <%= geo_chart Order.group(:bill_country_iso_name).count %>
+
+<% else %>
+
+<h1>Please Sign In to see the graphs</h1>
+<% end %>
